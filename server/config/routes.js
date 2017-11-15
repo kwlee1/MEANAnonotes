@@ -1,17 +1,21 @@
 // require in your controllers, if we have multiple controllers we require all of them!
 
 // example
-// var users = require('./../controllers/users.js');
 
-
+const quotes = require('./../controllers/quotes.js')
 const path = require('path');
 
 // routing exports a function that takes app
 module.exports = function(app){
 
-    // app.get('/all', function(req, res){
-    //     users.index(req, res);
-    // });
+    app.get('/quotes',function(req,res){
+        quotes.getAll(req,res);
+    })
+
+    app.post('/quotes',function(req,res){
+        console.log(req.body)
+        quotes.addQuote(req,res)
+    })
 
     // catch all to serve the index
     // make sure your file path matches the name of your angular app folder
